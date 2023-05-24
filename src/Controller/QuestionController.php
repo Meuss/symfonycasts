@@ -9,24 +9,24 @@ use Symfony\Component\Routing\Annotation\Route;
 class QuestionController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/", name="app_homepage")
      */
     public function homepage(): Response
     {
-        return new Response('Awesome!');
+        return $this->render('question/homepage.html.twig');
     }
 
     /**
-     * @Route("/question/{slug}")
+     * @Route("/question/{slug}", name="app_question_show")
      */
     public function show($slug): Response
     {
         return $this->render('question/show.html.twig', [
             'question' => ucwords(str_replace('-', ' ', $slug)),
             'answers' => [
-                'asdfasd',
-                'asdfasds',
-                'asdfd',
+                'Answer 1',
+                'Answer 2',
+                'Answer 3',
 
             ]
         ]);
